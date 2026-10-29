@@ -31,6 +31,15 @@ const projects = [
   },
   {
     id: 4,
+    title: "Sakura-Academy-Biella.it",
+    category: "Sport & Martial Arts",
+    desc: "Sito web per un'accademia di arti marziali a Biella: presentazione dei corsi di judo, brazilian jiu jitsu, grappling, kick boxing e corsi per bambini, con documenti e moduli per gli iscritti.",
+    tags: ["Web Design", "Responsive", "Client Work"],
+    link: "https://sakura-academy-biella.it",
+    type: "Production"
+  },
+  {
+    id: 5,
     title: "Enterprise Internal Applications",
     category: "Corporate Software",
     desc: "Sviluppo e manutenzione di applicativi interni aziendali ad alte prestazioni. Ottimizzazione di flussi dati complessi tramite API JSON stabili e manipolazione di database relazionali.",
