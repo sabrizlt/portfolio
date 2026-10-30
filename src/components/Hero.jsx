@@ -3,7 +3,7 @@ import CVButton from "./CVButton";
 
 const contactClass = "button-solid inline-block px-7 py-3.5 rounded-full font-medium";
 const cvClass = "glass glass-button inline-block px-7 py-3.5 rounded-full font-medium disabled:opacity-60";
-const ZOOM = 1.22;
+const ZOOM = 1.15;
 
 /* Il testo del titolo: la lente ne mostra una seconda copia, ingrandita. */
 function HeroCopy({ clone = false }) {
