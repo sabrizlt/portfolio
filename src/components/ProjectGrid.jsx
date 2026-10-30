@@ -43,29 +43,33 @@ export default function ProjectGrid() {
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {projects.map((project, i) => (
-          <ScrollReveal key={project.title} delay={(i % 2) * 80}>
+          <ScrollReveal key={project.title} delay={(i % 2) * 90}>
             <a
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="group block h-full rounded-2xl border border-line bg-surface overflow-hidden hover:border-faint transition-colors duration-300"
+              className="glass group block h-full rounded-[2rem] p-3 transition-transform duration-500 hover:-translate-y-1.5"
             >
-              <div className="aspect-[16/10] overflow-hidden bg-line">
+              <div className="aspect-[16/10] overflow-hidden rounded-[1.4rem]">
                 <img
                   src={base + project.image}
                   alt={`Il sito ${project.title}`}
                   loading="lazy"
-                  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
                 />
               </div>
-              <div className="p-6 md:p-8">
+              <div className="p-5 md:p-6">
                 <p className="text-sm text-faint">{project.category}</p>
-                <h3 className="mt-2 text-xl font-semibold tracking-tight text-paper">
+                <h3 className="mt-1.5 text-2xl font-semibold tracking-tight">
                   {project.title}
-                  <span aria-hidden className="inline-block ml-2 text-faint transition-all duration-300 group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
+                  <span aria-hidden className="inline-block ml-2 text-faint transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
                 </h3>
                 <p className="mt-3 text-muted leading-relaxed">{project.desc}</p>
-                <p className="mt-5 text-sm text-faint">{project.tags.join(" · ")}</p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="glass-pill px-3 py-1 rounded-full text-xs">{tag}</span>
+                  ))}
+                </div>
               </div>
             </a>
           </ScrollReveal>
@@ -73,16 +77,20 @@ export default function ProjectGrid() {
       </div>
 
       <ScrollReveal>
-        <div className="rounded-2xl border border-line bg-surface p-6 md:p-8 md:flex md:items-baseline md:justify-between gap-12">
+        <div className="glass rounded-[2rem] p-8 md:flex md:items-baseline md:justify-between gap-12">
           <div className="md:w-1/3 shrink-0">
             <p className="text-sm text-faint">Software aziendale</p>
-            <h3 className="mt-2 text-xl font-semibold tracking-tight text-paper">Applicativi interni</h3>
+            <h3 className="mt-1.5 text-2xl font-semibold tracking-tight">Applicativi interni</h3>
           </div>
           <div className="mt-3 md:mt-0">
             <p className="text-muted leading-relaxed">
               Sviluppo e manutenzione di applicativi interni: flussi di dati, API JSON e database relazionali. Il codice è proprietario, quindi non è pubblico.
             </p>
-            <p className="mt-4 text-sm text-faint">React · PHP · SQL</p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {["React", "PHP", "SQL"].map((tag) => (
+                <span key={tag} className="glass-pill px-3 py-1 rounded-full text-xs">{tag}</span>
+              ))}
+            </div>
           </div>
         </div>
       </ScrollReveal>

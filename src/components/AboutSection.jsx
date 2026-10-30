@@ -9,23 +9,25 @@ const timeline = [
 
 export default function AboutSection() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-5 gap-12">
-      <ScrollReveal className="md:col-span-3 space-y-5 text-lg text-muted leading-relaxed">
-        <p>
-          Mi occupo di sviluppo software dal 2022 e mi piace trasformare idee e necessità in soluzioni semplici, funzionali e curate nei dettagli.
-        </p>
-        <p>
-          Oggi lavoro alla <span className="text-paper">Technoparts S.r.l.</span>, dove sviluppo applicativi interni. Nel tempo ho lavorato su applicazioni web e mobile, database, API e sistemi che richiedono una gestione attenta dei dati.
-        </p>
-        <p>Parlare con le persone e costruire ciò che serve davvero è la parte che preferisco.</p>
+    <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+      <ScrollReveal className="md:col-span-3">
+        <div className="glass h-full rounded-[2rem] p-8 md:p-10 space-y-5 text-lg md:text-xl text-muted leading-relaxed">
+          <p>
+            Mi occupo di sviluppo software dal 2022 e mi piace trasformare idee e necessità in soluzioni semplici, funzionali e curate nei dettagli.
+          </p>
+          <p>
+            Oggi lavoro alla <span className="text-paper">Technoparts S.r.l.</span>, dove sviluppo applicativi interni. Nel tempo ho lavorato su applicazioni web e mobile, database, API e sistemi che richiedono una gestione attenta dei dati.
+          </p>
+          <p>Parlare con le persone e costruire ciò che serve davvero è la parte che preferisco.</p>
+        </div>
       </ScrollReveal>
 
-      <ScrollReveal delay={80} className="md:col-span-2">
-        <ol className="space-y-8">
+      <ScrollReveal delay={90} className="md:col-span-2">
+        <ol className="glass h-full rounded-[2rem] p-8 md:p-10 space-y-7">
           {timeline.map((item) => (
-            <li key={item.date} className="border-t border-line pt-4">
+            <li key={item.date}>
               <p className="text-sm text-faint">{item.date}</p>
-              <p className="mt-1 font-medium text-paper">{item.role}</p>
+              <p className="mt-1 font-medium">{item.role}</p>
               <p className="mt-1 text-muted">{item.detail}</p>
             </li>
           ))}

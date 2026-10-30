@@ -1,21 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 /**
- * Wraps children and adds a fade/slide-in animation when the element
- * enters the viewport. Pure IntersectionObserver — no extra dependencies.
- *
- * Props:
- *  - as: html tag to render (default 'div')
- *  - delay: ms delay before the animation starts (for staggering)
- *  - direction: 'up' | 'down' | 'left' | 'right' | 'scale'
- *  - once: replay on every scroll pass, or only the first time (default true)
- *  - className: extra classes passed through
+ * Fa entrare il contenuto quando arriva nello schermo.
+ * Solo con transform: opacity e will-change su un contenitore
+ * spegnerebbero l'effetto vetro di ciò che c'è dentro.
  */
 export default function ScrollReveal({
   children,
   as: Tag = 'div',
   delay = 0,
-  direction = 'up',
   once = true,
   className = '',
   ...rest
@@ -36,30 +29,20 @@ export default function ScrollReveal({
           setVisible(false);
         }
       },
-      { threshold: 0.05, rootMargin: '0px 0px -40px 0px' }
+      { threshold: 0.05 }
     );
 
     observer.observe(node);
     return () => observer.disconnect();
   }, [once]);
 
-  const hiddenTransform = {
-    up: 'translateY(12px)',
-    down: 'translateY(-12px)',
-    left: 'translateX(12px)',
-    right: 'translateX(-12px)',
-    scale: 'scale(0.94)',
-  }[direction];
-
   return (
     <Tag
       ref={ref}
       className={className}
       style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? 'none' : hiddenTransform,
-        transition: `opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
-        willChange: 'opacity, transform',
+        transform: visible ? 'none' : 'translateY(36px) scale(0.975)',
+        transition: `transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
       }}
       {...rest}
     >
