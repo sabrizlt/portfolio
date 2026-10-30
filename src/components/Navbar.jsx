@@ -7,7 +7,7 @@ const links = [
   { id: "contatti", label: "Contatti" },
 ];
 
-/* Barra sospesa: in alto su computer, in basso sul telefono come su iOS. */
+/* Barra sospesa in alto, su computer e sul telefono. */
 export default function Navbar() {
   const [active, setActive] = useState(null);
   const [indicator, setIndicator] = useState(null);
@@ -41,7 +41,7 @@ export default function Navbar() {
   }, [active]);
 
   return (
-    <nav className="fixed z-50 left-1/2 -translate-x-1/2 bottom-5 md:bottom-auto md:top-5">
+    <nav className="fixed z-50 left-1/2 -translate-x-1/2 top-3 md:top-5">
       <div className="glass rounded-full p-1.5 flex items-center gap-1 w-max">
         <a href="#top" className="hidden md:block px-4 font-semibold tracking-tight">
           Sabri

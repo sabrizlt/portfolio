@@ -79,7 +79,7 @@ export default function App() {
             </ScrollReveal>
           </section>
 
-          <footer className="pt-6 pb-28 md:pb-10 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-faint">
+          <footer className="pt-6 pb-10 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-faint">
             <p>© 2026 Sabri Zaltni</p>
             <div className="flex flex-wrap justify-center gap-6">
               {socials.map((social) => (

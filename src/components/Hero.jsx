@@ -38,7 +38,8 @@ export default function Hero() {
   const lens = useRef(null);
   const shadow = useRef(null);
   const inner = useRef(null);
-  const [enabled] = useState(() => !window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  // Sul telefono niente lente: coprirebbe il titolo e non c'è un puntatore da seguire.
+  const [enabled] = useState(() => window.matchMedia("(min-width: 768px) and (prefers-reduced-motion: no-preference)").matches);
 
   useEffect(() => {
     if (!enabled) return;

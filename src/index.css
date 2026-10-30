@@ -205,12 +205,9 @@ button:focus-visible {
 }
 
 @media (max-width: 767px) {
-  .lens {
-    --lens: 92px;
-  }
+  .lens,
   .lens-shadow {
-    width: 92px;
-    height: 92px;
+    display: none;
   }
 }
 
