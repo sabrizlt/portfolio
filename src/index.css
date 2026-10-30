@@ -1,126 +1,44 @@
 @import "tailwindcss";
+@import "@fontsource-variable/inter";
 
 @source "./src/**/*.{js,jsx,ts,tsx}";
 
-/* Nasconde il cursore nativo */
-html, body, a, button {
-  cursor: none !important;
-}
-
-/* Ripristina il cursore per gli elementi cliccabili per accessibilità (opzionale, ma consigliato) */
-a, button, [role="button"] {
-  cursor: none;
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --color-ink: #111214;
+  --color-surface: #17181b;
+  --color-line: #26282c;
+  --color-paper: #f2f0eb;
+  --color-muted: #9c9b98;
+  --color-faint: #6e6e6c;
+  --color-accent: #b4b8ff;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
-section{
-  margin-bottom: 100px !important;
+body {
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-feature-settings: "cv11", "ss03";
 }
 
-main{
-  padding-bottom: 0px !important;
+::selection {
+  background: var(--color-accent);
+  color: var(--color-ink);
 }
 
-/* ---------- Sfondo dinamico ---------- */
-
-/* Blob di luce che deriva lentamente: rompe il nero piatto senza rubare
-   attenzione al contenuto. */
-@keyframes drift {
-  0%   { transform: translate(0, 0) scale(1); }
-  33%  { transform: translate(4%, -6%) scale(1.08); }
-  66%  { transform: translate(-3%, 4%) scale(0.96); }
-  100% { transform: translate(0, 0) scale(1); }
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 6px;
 }
 
-.bg-aurora {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.bg-aurora span {
-  position: absolute;
-  border-radius: 9999px;
-  filter: blur(90px);
-  opacity: 0.16;
-  animation: drift 22s ease-in-out infinite;
-}
-
-.bg-aurora span:nth-child(1) {
-  top: -10%;
-  left: 8%;
-  width: 32rem;
-  height: 32rem;
-  background: #10b981;
-}
-
-.bg-aurora span:nth-child(2) {
-  top: 30%;
-  right: 4%;
-  width: 26rem;
-  height: 26rem;
-  background: #059669;
-  animation-delay: -7s;
-  animation-duration: 26s;
-}
-
-.bg-aurora span:nth-child(3) {
-  bottom: -8%;
-  left: 30%;
-  width: 30rem;
-  height: 30rem;
-  background: #34d399;
-  animation-delay: -14s;
-  animation-duration: 30s;
-}
-
-/* Rumore/grana sottile sopra tutto, per texture, non piatto */
-.bg-grain {
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  mix-blend-mode: overlay;
-}
-
-/* Barra di avanzamento scroll in Navbar */
-@keyframes progress-glow {
-  0%, 100% { box-shadow: 0 0 6px rgba(16, 185, 129, 0.5); }
-  50% { box-shadow: 0 0 12px rgba(16, 185, 129, 0.9); }
-}
-
-.scroll-progress {
-  animation: progress-glow 2s ease-in-out infinite;
-}
-
-/* Rispetta le preferenze di riduzione del movimento */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  .bg-aurora span,
-  .scroll-progress {
-    animation: none !important;
-  }
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-marquee {
-  animation: marquee 30s linear infinite;
 }

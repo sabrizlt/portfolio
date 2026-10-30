@@ -36,7 +36,7 @@ export default function ScrollReveal({
           setVisible(false);
         }
       },
-      { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+      { threshold: 0.05, rootMargin: '0px 0px -40px 0px' }
     );
 
     observer.observe(node);
@@ -44,10 +44,10 @@ export default function ScrollReveal({
   }, [once]);
 
   const hiddenTransform = {
-    up: 'translateY(28px)',
-    down: 'translateY(-28px)',
-    left: 'translateX(28px)',
-    right: 'translateX(-28px)',
+    up: 'translateY(12px)',
+    down: 'translateY(-12px)',
+    left: 'translateX(12px)',
+    right: 'translateX(-12px)',
     scale: 'scale(0.94)',
   }[direction];
 

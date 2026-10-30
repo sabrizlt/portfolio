@@ -1,237 +1,101 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Navbar from "./components/Navbar";
 import ProjectGrid from "./components/ProjectGrid";
 import AboutSection from "./components/AboutSection";
-import GeoCard from "./components/GeoCard";
-import CustomCursor from "./components/CustomCursor";
 import ScrollReveal from "./components/ScrollReveal";
+import SectionHeading from "./components/SectionHeading";
 import Technologie from "./components/Technologie";
-import { PDFDownloadLink } from "@react-pdf/renderer";
-import CVDocument from "./components/CVDocument";
+import CVButton from "./components/CVButton";
+
+const socials = [
+  { label: "GitHub", href: "https://github.com/sabrizlt" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/sabri-zaltni-704310270/" },
+  { label: "Instagram", href: "https://www.instagram.com/sabri.zlt/" },
+  { label: "Facebook", href: "https://www.facebook.com/sabri.zaltini/?locale=it_IT" },
+];
 
 export default function App() {
-  useEffect(() => {
-    console.clear();
-    console.log(
-      `%c 
-       ____    _    ____  ____  ___     ____  _______     __
-      / ___|  / \\  | __ )|  _ \\|_ _|   |  _ \\| ____\\ \\   / /
-      \\___ \\ / _ \\ |  _ \\| |_) || |    | | | |  _|  \\ \\ / / 
-       ___) / ___ \\| |_) |  _ < | |    | |_| | |___  \\ V /  
-      |____/_/   \\_\\____/|_| \\_\\___|   |____/|_____|  \\_/   
-                                                            
-      `,
-      "color: #10b981; font-weight: bold; font-family: monospace;",
-    );
-  }, []);
-
   return (
-    <div className="relative min-h-screen bg-black text-neutral-100 font-sans antialiased selection:bg-emerald-500 selection:text-black overflow-x-hidden">
-      {/* SFONDO DINAMICO: blob che derivano lentamente + grana + scia particelle */}
-
-      <div className="bg-aurora">
-        <span />
-        <span />
-        <span />
-      </div>
-      <div className="bg-grain" />
-
-      {/* CURSORE PERSONALIZZATO */}
-      <CustomCursor />
-
-      {/* NAVBAR COMPONENTE SEPARATO */}
+    <div id="top" className="relative min-h-screen bg-ink text-paper font-sans antialiased">
       <Navbar />
 
-      <div
-        className="
-fixed
-right-0
-bottom-0
-w-[400px]
-h-[500px]
-"
-      ></div>
-
-      {/* CONTENITORE PRINCIPALE */}
-      <main className="relative z-10 max-w-6xl mx-auto px-6 py-24 space-y-40">
-        {/* HERO SECTION */}
-        <section className="min-h-[50vh] flex flex-col justify-center space-y-6">
-          <ScrollReveal direction="down" once>
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-neutral-950 border border-neutral-900 w-fit">
-              <span className="w-1.5 h-1.5 bg-emerald-500 animate-pulse"></span>
-              <span className="text-xs font-mono text-neutral-400 uppercase tracking-widest">
-                System Ready // Available
-              </span>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal delay={100} once>
-            <h1 className="text-5xl md:text-7xl font-light tracking-tight leading-[1.1] font-mono text-white">
-              Creo esperienze <br />
-              <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-neutral-100 via-neutral-400 to-neutral-600">
-                web, mobile e digitali.
-              </span>
-            </h1>
-          </ScrollReveal>
-
-          <ScrollReveal delay={200} once>
-            <p className="text-neutral-400 text-base md:text-lg max-w-2xl leading-relaxed font-sans">
-              Full-Stack Developer appassionato di tecnologia e sviluppo
-              digitale. Mi piace trasformare idee in progetti concreti, creando
-              applicazioni web e mobile curate nei dettagli, funzionali e
-              semplici da utilizzare.
+      <main className="max-w-6xl mx-auto px-6">
+        {/* HERO */}
+        <section className="pt-40 pb-24 md:pt-48 md:pb-32">
+          <ScrollReveal once>
+            <p className="flex items-center gap-2.5 text-sm text-muted">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+              Full-Stack Developer · disponibile da remoto
             </p>
           </ScrollReveal>
 
-          <ScrollReveal delay={300} once>
-            <PDFDownloadLink
-              document={<CVDocument />}
-              fileName="CV-Sabri-Zaltni.pdf"
-              className="
-    inline-flex
-    items-center
-    justify-center
-    px-6
-    py-3
-    bg-white
-    text-black
-    border
-    border-white
-    text-sm
-    font-mono
-    font-medium
-    tracking-wide
-    uppercase
-    transition-all
-    duration-300
-    hover:bg-neutral-200
-    hover:border-neutral-200
-    no-underline
-  "
-            >
-              {({ loading }) =>
-                loading ? "Generazione CV..." : "Scarica il mio CV"
-              }
-            </PDFDownloadLink>{" "}
+          <ScrollReveal delay={80} once>
+            <h1 className="mt-6 max-w-4xl text-5xl md:text-7xl font-semibold tracking-[-0.035em] leading-[1.05]">
+              Sviluppo siti e app su misura per far crescere la tua attività.
+            </h1>
+          </ScrollReveal>
+
+          <ScrollReveal delay={160} once>
+            <p className="mt-8 max-w-2xl text-lg md:text-xl text-muted leading-relaxed">
+              Sono Sabri. Trasformo idee in prodotti concreti, curati nei dettagli, funzionali e semplici da usare.
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal delay={240} once>
+            <div className="mt-10 flex flex-wrap items-center gap-3">
+              <a href="#contatti" className="px-6 py-3 rounded-full bg-paper text-ink font-medium hover:bg-white transition-colors">
+                Parliamo del tuo progetto
+              </a>
+              <CVButton className="px-6 py-3 rounded-full border border-line text-paper font-medium hover:border-faint transition-colors disabled:opacity-60" />
+            </div>
           </ScrollReveal>
         </section>
 
-        {/* PROGETTI SECTION */}
-        <section id="progetti" className="space-y-12">
-          <ScrollReveal>
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-neutral-900 pb-6">
-              <div>
-                <h2 className="text-2xl font-mono uppercase tracking-wider text-white">
-                  I miei progetti
-                </h2>
-                <p className="text-neutral-500 text-sm mt-1">
-                  Idee, esperimenti e progetti nati dalla voglia di creare.
-                </p>
-              </div>
-            </div>
-          </ScrollReveal>
-
+        <section id="progetti" className="py-16 md:py-24">
+          <SectionHeading title="Progetti" intro="Alcuni dei lavori che ho realizzato." />
           <ProjectGrid />
         </section>
 
-        {/* ABOUT & TIMELINE SECTION */}
-        <section id="about" className="space-y-12">
-          <ScrollReveal>
-            <div className="border-t border-neutral-900 pt-16">
-              <h2 className="text-2xl font-mono uppercase tracking-wider text-white">
-                Experience // Background
-              </h2>
-              <p className="text-neutral-500 text-sm mt-1">
-                Il mio percorso nel mondo dello sviluppo e le mie aree di focus.
-              </p>
-            </div>
-          </ScrollReveal>
-
+        <section id="about" className="py-16 md:py-24">
+          <SectionHeading title="Percorso" />
           <AboutSection />
         </section>
 
-        <section id="technologie" className="space-y-12">
-          <ScrollReveal>
-            <div className="border-t border-neutral-900 pt-16">
-              <h2 className="text-2xl font-mono uppercase tracking-wider text-white">
-                Technologies // Tools
-              </h2>
-              <p className="text-neutral-500 text-sm mt-1">
-                Gli strumenti e le tecnologie con cui mi piace lavorare.
-              </p>
-            </div>
-          </ScrollReveal>
-
+        <section id="technologie" className="py-16 md:py-24">
+          <SectionHeading title="Tecnologie" />
           <Technologie />
         </section>
 
-        {/* CONTATTI & GEOLOCALIZZAZIONE */}
-        <section id="contatti" className="space-y-12">
+        <section id="contatti" className="py-16 md:py-24">
           <ScrollReveal>
-            <div className="border-t border-neutral-900 pt-16">
-              <h2 className="text-2xl font-mono uppercase tracking-wider text-white">
-                Connessione // Info
+            <div className="rounded-3xl border border-line bg-surface p-8 md:p-16">
+              <h2 className="max-w-2xl text-4xl md:text-5xl font-semibold tracking-tight leading-[1.1]">
+                Hai un progetto in mente? Parliamone.
               </h2>
-              <p className="text-neutral-500 text-sm mt-1">
-                Mettiti in contatto per collaborazioni o consulenze tecniche.
+              <p className="mt-5 max-w-xl text-lg text-muted leading-relaxed">
+                Lavoro da Comiso, in Sicilia, e da remoto con clienti in Italia e all'estero. Di solito rispondo entro poche ore.
               </p>
+              <div className="mt-10 flex flex-col sm:flex-row sm:items-center gap-x-8 gap-y-4">
+                <a href="mailto:sabrizaltni@gmail.com" className="px-6 py-3 w-fit rounded-full bg-paper text-ink font-medium hover:bg-white transition-colors">
+                  sabrizaltni@gmail.com
+                </a>
+                <a href="tel:+3933485575390" className="text-muted hover:text-paper transition-colors">
+                  +39 334 855 75390
+                </a>
+              </div>
             </div>
           </ScrollReveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <ScrollReveal direction="left" className="md:col-span-2">
-              <div className="p-8 bg-black border border-neutral-900 flex flex-col justify-between h-full hover:border-neutral-800 transition-colors duration-500">
-                <div>
-                  <span className="text-xs font-mono text-emerald-400 bg-neutral-950 px-3 py-1 border border-neutral-900 uppercase tracking-wider block w-fit mb-6">
-                    // CHANNELS
-                  </span>
-                  <h3 className="text-xl font-mono font-bold text-white mb-6">
-                    Avvia una sessione di comunicazione
-                  </h3>
-
-                  <div className="space-y-4 font-mono text-sm">
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between p-4 border border-neutral-900 bg-neutral-950/30 hover:border-emerald-500/40 hover:bg-neutral-950/60 transition-all duration-300">
-                      <span className="text-neutral-500">EMAIL:</span>
-                      <a
-                        href="mailto:sabrizaltni@gmail.com"
-                        className="text-emerald-400 hover:underline text-sm sm:text-base"
-                      >
-                        sabrizaltni@gmail.com
-                      </a>
-                    </div>
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between p-4 border border-neutral-900 bg-neutral-950/30 hover:border-emerald-500/40 hover:bg-neutral-950/60 transition-all duration-300">
-                      <span className="text-neutral-500">PHONE:</span>
-                      <a
-                        href="tel:+3933485575390"
-                        className="text-neutral-300 hover:text-emerald-400 transition-colors"
-                      >
-                        +39 334 855 75390
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div className="text-xs font-mono text-neutral-600 mt-8">
-                  P.S. Rispondo solitamente entro poche ore. Codice pulito
-                  garantito.
-                </div>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal
-              direction="right"
-              delay={120}
-              className="md:col-span-1"
-            >
-              <GeoCard />
-            </ScrollReveal>
-          </div>
         </section>
 
-        {/* FOOTER */}
-        <footer className="border-t border-neutral-900 pt-16 pb-12 text-center">
-          <p className="text-xs text-neutral-600 font-mono tracking-widest uppercase">
-            &copy; 2026 SABRI.DEV // COMISO, IT.
-          </p>
+        <footer className="border-t border-line py-10 flex flex-col sm:flex-row justify-between gap-4 text-sm text-faint">
+          <p>© 2026 Sabri Zaltni</p>
+          <div className="flex flex-wrap gap-6">
+            {socials.map((social) => (
+              <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" className="hover:text-paper transition-colors">
+                {social.label}
+              </a>
+            ))}
+          </div>
         </footer>
       </main>
     </div>
